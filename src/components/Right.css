@@ -1,0 +1,6 @@
+#right-box {
+  display:flex;
+  width: 33.33%;
+  height: 80%;
+  background-color: darkkhaki;
+}

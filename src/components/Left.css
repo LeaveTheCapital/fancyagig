@@ -1,0 +1,13 @@
+#left-box {
+  display:flex;
+  width: 33.33%;
+  height: 80%;
+  background-color: sandybrown;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+
+#city-search {
+  height: 2em;
+  width: 100%;
+}

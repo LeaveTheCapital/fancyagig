@@ -1,0 +1,6 @@
+#middle-box {
+  display:flex;
+  width: 33.333%;
+  height: 80%;
+  background-color: olive;
+}
