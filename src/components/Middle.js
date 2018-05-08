@@ -1,10 +1,20 @@
 import React from 'react';
 import './Middle.css';
+import { getGigsByGenre } from '../utils'
 
-const Middle = () => (
-  <div id="middle-box">
+const Middle = ({ gigs, currentGenre }) => {
+  const gigsByGenre = getGigsByGenre(gigs, currentGenre)
+  return (
+    <div id="middle-box">
+      <div>
 
-  </div>
-);
-
-export default Middle;
+        {gigsByGenre.map((gig, i) => <div className="gig-squares" key={i}>
+          {gig.name}
+        </div>
+      </div>)}
+    </div>
+      );
+    
+    }
+    
+    export default Middle;

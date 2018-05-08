@@ -4,3 +4,7 @@
   height: 80%;
   background-color: olive;
 }
+
+.gig-square {
+  overflow: auto;
+}

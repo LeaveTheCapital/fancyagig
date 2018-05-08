@@ -16,20 +16,22 @@ class App extends Component {
     currentLocation: null
   };
 
-  // componentDidMount() {
-  //   this.getAllGigs();
-  // }
-
   render() {
     const { gigs } = this.state;
     return (
       <div className="App">
         <Header />
-        <Left gigs={gigs} handleEnter={this.handleEnter} />
-        <Middle />
+        <Left gigs={gigs} handleEnter={this.handleEnter} handleGenreClick={this.handleGenreClick} />
+        <Middle gigs={gigs.events} currentGenre={this.state.currentGenre} />
         <Right />
       </div>
     );
+  }
+
+  handleGenreClick = genre => {
+    this.setState({
+      currentGenre: genre
+    })
   }
 
   getAllGigs = location => {

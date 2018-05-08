@@ -2,14 +2,10 @@ import React from "react";
 import "./Left.css";
 import { getGenres } from "../utils";
 
-const Left = ({ gigs, handleEnter }) => {
+const Left = ({ gigs, handleEnter, handleGenreClick }) => {
   let genres;
-  // genres = [{ rock: 1 }, { roll: 3 }];
-  // gigs.events = [1, 2, 3];
-  console.log(gigs.events);
   if (gigs.events.length > 0) {
     genres = getGenres(gigs);
-    // console.log(Object.keys(genres[0]));
   }
   return (
     <div id="left-box">
@@ -23,7 +19,7 @@ const Left = ({ gigs, handleEnter }) => {
         <div id="genre-box">
           {genres.map((genre, i) => {
             return (
-              <div className="genre" key={genre[0]}>
+              <div className="genre" key={genre[0]} onClick={() => handleGenreClick(genre[0])}>
                 {genre[0]} : {genre[1]}
               </div>
             );

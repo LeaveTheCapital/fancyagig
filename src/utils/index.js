@@ -18,6 +18,12 @@ const getGenres = gigs => {
   return outArr;
 };
 
-const getGigsByGenre = () => {};
+const getGigsByGenre = (gigs, genre) => {
+  return gigs.filter(gig => {
+    if (gig.classifications) {
+      return gig.classifications[0].genre.name === genre
+    }
+  })
+};
 
 export { getGenres, getGigsByGenre };
