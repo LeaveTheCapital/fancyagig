@@ -17,3 +17,15 @@
   flex-flow: column wrap;
   text-align: center;
 }
+
+.genre {
+  font-size: 2em;
+  color: seagreen;
+  padding-left: 1em;
+}
+
+#current-location {
+  color: seagreen;
+  font-size: 3em;
+  padding-left: 2em;
+}

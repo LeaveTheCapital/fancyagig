@@ -6,7 +6,7 @@ import Middle from "./components/Middle";
 import Right from "./components/Right";
 import axios from "axios";
 
-import { getGenres, getGigsByGenre } from "./utils";
+// import { getGenres, getGigsByGenre } from "./utils";
 
 class App extends Component {
   state = {
@@ -17,12 +17,17 @@ class App extends Component {
   };
 
   render() {
-    const { gigs } = this.state;
+    const { gigs, currentGenre, currentLocation } = this.state;
     return (
       <div className="App">
         <Header />
-        <Left gigs={gigs} handleEnter={this.handleEnter} handleGenreClick={this.handleGenreClick} />
-        <Middle gigs={gigs.events} currentGenre={this.state.currentGenre} />
+        <Left
+          gigs={gigs}
+          handleEnter={this.handleEnter}
+          handleGenreClick={this.handleGenreClick}
+          currentLocation={currentLocation}
+        />
+        <Middle gigs={gigs.events} currentGenre={currentGenre} />
         <Right />
       </div>
     );
@@ -31,8 +36,8 @@ class App extends Component {
   handleGenreClick = genre => {
     this.setState({
       currentGenre: genre
-    })
-  }
+    });
+  };
 
   getAllGigs = location => {
     let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=GPehQJ8IlYAwNy3CtkWB01ztkRblIVWo&countryCode=GB&size=200&city=${location}`;

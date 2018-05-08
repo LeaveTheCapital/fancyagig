@@ -2,13 +2,14 @@ import React from "react";
 import "./Left.css";
 import { getGenres } from "../utils";
 
-const Left = ({ gigs, handleEnter, handleGenreClick }) => {
+const Left = ({ gigs, handleEnter, handleGenreClick, currentLocation }) => {
   let genres;
   if (gigs.events.length > 0) {
     genres = getGenres(gigs);
   }
   return (
     <div id="left-box">
+      {currentLocation && <div id="current-location">{currentLocation}</div>}
       <input
         type="text"
         id="city-search"
@@ -19,7 +20,11 @@ const Left = ({ gigs, handleEnter, handleGenreClick }) => {
         <div id="genre-box">
           {genres.map((genre, i) => {
             return (
-              <div className="genre" key={genre[0]} onClick={() => handleGenreClick(genre[0])}>
+              <div
+                className="genre"
+                key={genre[0]}
+                onClick={() => handleGenreClick(genre[0])}
+              >
                 {genre[0]} : {genre[1]}
               </div>
             );
@@ -29,7 +34,10 @@ const Left = ({ gigs, handleEnter, handleGenreClick }) => {
       {gigs.events.length === 0 && (
         <div id="waiting-box">
           Enter a city!
-          <img src="https://lefthandhorror.files.wordpress.com/2012/04/metal1.gif" />
+          <img
+            src="https://lefthandhorror.files.wordpress.com/2012/04/metal1.gif"
+            alt="🤘"
+          />
         </div>
       )}
     </div>

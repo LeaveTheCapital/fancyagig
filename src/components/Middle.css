@@ -1,10 +1,33 @@
 #middle-box {
-  display:flex;
+  display: flex;
   width: 33.333%;
   height: 80%;
   background-color: olive;
 }
 
 .gig-square {
+  width: 50%;
+  height: 30%;
+  background-color: darkorange;
+  outline: 1px solid black;
+  text-align: center;
+}
+
+#events-box {
+  display: flex;
+  flex-flow: row wrap;
   overflow: auto;
+  width: 100%;
+}
+
+.gig-thumb {
+  max-height: 60%;
+  max-width: 100%;
+}
+
+#inner-gig-square {
+  max-height: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
 }
