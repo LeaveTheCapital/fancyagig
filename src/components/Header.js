@@ -1,11 +1,9 @@
-import React from 'react';
-import './Header.css'
+import React from "react";
+import "./Header.css";
 
 const Header = () => (
   <div id="header-box">
-    <h1>
-      Fancy a gig...?
-  </h1>
+    <h1>Fancy a gig...? 🤔🤘</h1>
   </div>
 );
 

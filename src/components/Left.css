@@ -1,5 +1,5 @@
 #left-box {
-  display:flex;
+  display: flex;
   width: 33.33%;
   height: 80%;
   background-color: sandybrown;
@@ -10,4 +10,10 @@
 #city-search {
   height: 2em;
   width: 100%;
+}
+
+#waiting-box {
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
 }

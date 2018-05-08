@@ -1,51 +1,59 @@
-import React, { Component } from 'react';
-import './App.css';
-import Header from './components/Header';
-import Left from './components/Left';
-import Middle from './components/Middle';
-import Right from './components/Right';
-import axios from 'axios';
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Left from "./components/Left";
+import Middle from "./components/Middle";
+import Right from "./components/Right";
+import axios from "axios";
 
-import { getGenres, getGigsByGenre } from './utils'
+import { getGenres, getGigsByGenre } from "./utils";
 
 class App extends Component {
   state = {
-    events: [],
+    gigs: { events: [] },
     currentGenre: null,
     currentGig: null,
     currentLocation: null
-  }
+  };
 
-  componentDidMount() {
-    this.getAllGigs();
-  }
+  // componentDidMount() {
+  //   this.getAllGigs();
+  // }
 
   render() {
-    const { events } = this.state;
+    const { gigs } = this.state;
     return (
       <div className="App">
         <Header />
-        <Left events={events} />
+        <Left gigs={gigs} handleEnter={this.handleEnter} />
         <Middle />
         <Right />
       </div>
     );
   }
 
-  getAllGigs = () => {
-    const currentLocation = 'Manchester';
-    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=GPehQJ8IlYAwNy3CtkWB01ztkRblIVWo&countryCode=GB&size=500&city=${currentLocation}`
-    axios.get(url)
-      .then(({ _embedded: events }) =>
-        this.setState({
-          events
-        })
-      )
-  }
+  getAllGigs = location => {
+    let url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=GPehQJ8IlYAwNy3CtkWB01ztkRblIVWo&countryCode=GB&size=200&city=${location}`;
+    return axios.get(url);
+  };
 
   selectGig = () => {
     // use local storage
-  }
+  };
+
+  handleEnter = event => {
+    const currentLocation = event.target.value;
+    if (event.key === "Enter" && currentLocation !== "") {
+      event.target.value = "";
+      this.getAllGigs(currentLocation)
+        .then(({ data: { _embedded: events } }) => {
+          this.setState({ currentLocation, gigs: events });
+        })
+        .catch(err => {
+          console.log("err", err);
+        });
+    }
+  };
 }
 
 export default App;
