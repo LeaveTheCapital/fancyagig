@@ -26,4 +26,37 @@ const getGigsByGenre = (gigs, genre) => {
   });
 };
 
-export { getGenres, getGigsByGenre };
+const getGigDetails = (gigs, id) => {
+  const chosenGig = gigs.filter(gig => {
+    return gig.id === id;
+  })[0];
+  const gigObj = {
+    name: chosenGig.name,
+    url: chosenGig.url,
+    venue: chosenGig._embedded.venues[0].name,
+    location: chosenGig._embedded.venues[0].location,
+    image: chosenGig.images[0].url,
+    date: chosenGig.dates.start.localDate,
+    genre: chosenGig.classifications[0].genre.name,
+    id: chosenGig.id
+  };
+  gigObj.info = chosenGig.pleaseNote
+    ? chosenGig.pleaseNote
+    : chosenGig.info
+      ? chosenGig.info
+      : null;
+
+  gigObj.time = chosenGig.dates.start.localTime
+    ? chosenGig.dates.start.localTime.slice(0, 5)
+    : null;
+
+  gigObj.genre +=
+    chosenGig.classifications[0].subGenre.name !== undefined
+      ? chosenGig.classifications[0].subGenre.name !== gigObj.genre
+        ? "/" + chosenGig.classifications[0].subGenre.name
+        : ""
+      : "";
+  return gigObj;
+};
+
+export { getGenres, getGigsByGenre, getGigDetails };

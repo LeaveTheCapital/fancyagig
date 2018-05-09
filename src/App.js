@@ -17,7 +17,8 @@ class App extends Component {
   };
 
   render() {
-    const { gigs, currentGenre, currentLocation } = this.state;
+    const { gigs, currentGenre, currentLocation, currentGig } = this.state;
+    console.log(React.version);
     return (
       <div className="App">
         <Header />
@@ -27,11 +28,19 @@ class App extends Component {
           handleGenreClick={this.handleGenreClick}
           currentLocation={currentLocation}
         />
-        <Middle gigs={gigs.events} currentGenre={currentGenre} />
-        <Right />
+        <Middle
+          handleGigClick={this.handleGigClick}
+          gigs={gigs.events}
+          currentGenre={currentGenre}
+        />
+        <Right gigs={gigs.events} currentGig={currentGig} />
       </div>
     );
   }
+
+  handleGigClick = e => {
+    this.setState({ currentGig: e.currentTarget.id });
+  };
 
   handleGenreClick = genre => {
     this.setState({
@@ -54,7 +63,7 @@ class App extends Component {
       event.target.value = "";
       this.getAllGigs(currentLocation)
         .then(({ data: { _embedded: events } }) => {
-          this.setState({ currentLocation, gigs: events });
+          this.setState({ currentLocation, gigs: events, currentGenre: null });
         })
         .catch(err => {
           console.log("err", err);
