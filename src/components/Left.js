@@ -9,13 +9,15 @@ const Left = ({ gigs, handleEnter, handleGenreClick, currentLocation }) => {
   }
   return (
     <div id="left-box">
-      {currentLocation && <div id="current-location">{currentLocation}</div>}
-      <input
-        type="text"
-        id="city-search"
-        placeholder="Enter a city to get gigging!"
-        onKeyUp={handleEnter}
-      />
+      <div id="city-search-box">
+
+        <input
+          type="text"
+          id="city-search"
+          placeholder="Enter a city to get gigging!"
+          onKeyUp={handleEnter}
+        />
+      </div>
       {gigs.events.length > 0 && (
         <div id="genre-box">
           {genres.map((genre, i) => {

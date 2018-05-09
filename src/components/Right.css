@@ -37,3 +37,7 @@
   border: 3px solid hotpink;
   color: seagreen;
 }
+
+#gig-link:hover {
+  border: 3px solid seagreen;
+}

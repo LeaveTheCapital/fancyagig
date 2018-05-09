@@ -1,16 +1,27 @@
 #left-box {
+  position: relative;
   display: flex;
   width: 33.33%;
   height: 80%;
   background-color: sandybrown;
   flex-flow: column wrap;
-  justify-content: space-around;
+  z-index: 10;
+  /* justify-content: space-around; */
 }
 
-#city-search {
-  height: 2em;
-  width: 100%;
+#city-search-box {
+  display: flex;
+  justify-content: center;
+  width:100%;
+  height: 15%;
 }
+#city-search {
+  
+  height: 2em;
+  width: 90%;
+  margin: 0 auto
+}
+
 
 #waiting-box {
   display: flex;
@@ -28,4 +39,11 @@
   color: seagreen;
   font-size: 3em;
   padding-left: 2em;
+}
+
+#genre-box {
+  display: flex;
+  flex-flow: column nowrap;
+  max-height: 85%;
+  overflow: auto;
 }

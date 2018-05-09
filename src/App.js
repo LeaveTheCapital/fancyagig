@@ -18,10 +18,9 @@ class App extends Component {
 
   render() {
     const { gigs, currentGenre, currentLocation, currentGig } = this.state;
-    console.log(React.version);
     return (
       <div className="App">
-        <Header />
+        <Header currentLocation={this.state.currentLocation} />
         <Left
           gigs={gigs}
           handleEnter={this.handleEnter}

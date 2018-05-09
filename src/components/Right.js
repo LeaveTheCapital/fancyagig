@@ -5,16 +5,27 @@ import { getGigDetails } from "../utils";
 
 class Right extends Component {
   state = {
-    currentGig: null
+    currentGig: null,
+    previousGigs: []
   };
 
   componentWillReceiveProps(nextProps) {
+    const numPrevGigs = this.state.previousGigs.length;
+    const newPreviousGigs = this.state.previousGigs.slice();
+    // previousGigs.length < 3 ? 
     if (nextProps.currentGig) {
       if (this.props.currentGig) {
         if (this.state.currentGig) {
           if (this.props.currentGig !== this.state.currentGig.id) {
+            if (numPrevGigs < 3) {
+              newPreviousGigs.unshift(getGigDetails(this.props.gigs, this.props.currentGig))
+            } else if (numPrevGigs === 3) {
+              newPreviousGigs.unshift(getGigDetails(this.props.gigs, this.props.currentGig));
+              newPreviousGigs.pop();
+            }
             this.setState({
-              currentGig: getGigDetails(this.props.gigs, this.props.currentGig)
+              currentGig: getGigDetails(this.props.gigs, this.props.currentGig),
+              previousGigs: newPreviousGigs
             });
           }
         } else if (this.props.currentGig !== nextProps.currentGig) {
@@ -31,6 +42,7 @@ class Right extends Component {
   render() {
     const { gigs, currentGig } = this.props;
     const oldCurrentGig = this.state.currentGig;
+    const previousGigs = this.state.previousGigs;
     let gig;
     if (currentGig) {
       if (!oldCurrentGig) {
@@ -58,6 +70,13 @@ class Right extends Component {
             </a>
           </div>
         )}
+        <ul>
+          {previousGigs.map((previousGig) => {
+            return <li>
+              {previousGig.name}
+            </li>
+          })}
+        </ul>
       </div>
     );
   }

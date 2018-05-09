@@ -2,7 +2,7 @@ const getGenres = gigs => {
   const genreObj = gigs.events.reduce((acc, gig) => {
     if (gig.classifications) {
       if (gig.classifications[0].segment) {
-        if (gig.classifications[0].segment.name === "Music") {
+        if (gig.classifications[0].segment.name) {
           acc[gig.classifications[0].genre.name]
             ? acc[gig.classifications[0].genre.name]++
             : (acc[gig.classifications[0].genre.name] = 1);
@@ -23,6 +23,7 @@ const getGigsByGenre = (gigs, genre) => {
     if (gig.classifications) {
       return gig.classifications[0].genre.name === genre;
     }
+    else return false;
   });
 };
 

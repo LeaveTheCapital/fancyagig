@@ -15,9 +15,9 @@ const Middle = ({ gigs, currentGenre, handleGigClick }) => {
             id={gig.id}
           >
             <div id="inner-gig-square">
-              {gig.name}
+              <p className="gig-name">{gig.name}</p>
               <img src={gig.images[0].url} className="gig-thumb" alt="" />
-              {gig.dates.start.localDate}
+              <p className="gig-date">{gig.dates.start.localDate}</p>
             </div>
           </div>
         ))}
