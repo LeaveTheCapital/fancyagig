@@ -9,10 +9,13 @@ h1 {
   padding-top: 0.6em;
 }
 
-h2{
+h2 {
+}
+
+.locName {
   position: absolute;
   animation: flyin 2s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
   /* z-index: 9; */
 }
 
@@ -21,12 +24,11 @@ h2{
     margin-left: 13%;
     margin-top: 5%;
   }
-  50%{
+  50% {
     margin-top: 2%;
-    margin-left: 13%
+    margin-left: 13%;
   }
   to {
     margin-left: 45%;
   }
-  
 }
