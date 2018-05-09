@@ -47,6 +47,18 @@ const getGigDetails = (gigs, id) => {
       ? chosenGig.info
       : null;
 
+  if (gigObj.info || gigObj.pleaseNote) {
+    if (gigObj.info) {
+      if (gigObj.info.length > 130) {
+        gigObj.info = gigObj.info.slice(0, 130) + '...'
+      }
+    } else if (gigObj.pleaseNote) {
+      if (gigObj.pleaseNote.length > 130) {
+        gigObj.pleaseNote = gigObj.pleaseNote.slice(0, 130) + '...'
+      }
+    }
+  }
+
   gigObj.time = chosenGig.dates.start.localTime
     ? chosenGig.dates.start.localTime.slice(0, 5)
     : null;

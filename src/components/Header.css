@@ -2,7 +2,7 @@
   width: 100%;
   height: 20%;
   text-align: center;
-  background-color: palegoldenrod;
+  background-color: #6F9FD8;
 }
 
 h1 {
@@ -10,9 +10,18 @@ h1 {
 }
 
 h2 {
+  margin-top: 0.2em;
+  font-size: 2em;
+  font-style: italic;
+  border: 1px solid black;
+}
+
+#location-heading {
+  
 }
 
 .locName {
+  margin-left: 45%;
   position: absolute;
   animation: flyin 2s;
   animation-iteration-count: 1;

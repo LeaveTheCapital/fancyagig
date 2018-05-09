@@ -10,9 +10,10 @@ class Header extends Component {
     return nextProps.currentLocation !== this.props.currentLocation;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(nextProps) {
+    console.log(this.state.class)
     setTimeout(() => {
-      this.setState({ class: "" });
+      this.setState({ class: this.props.currentLocation || 'locName' });
     }, 2000);
   }
 
@@ -24,10 +25,10 @@ class Header extends Component {
           <span role="img" aria-label="rock-on">
             🤔🤘
           </span>
-          {this.props.currentLocation && (
-            <h2 className={this.state.class}>{this.props.currentLocation}</h2>
-          )}
         </h1>
+        {this.props.currentLocation && (
+          <h2 id="location-heading" className={this.state.class}>{this.props.currentLocation}</h2>
+        )}
       </div>
     );
   }

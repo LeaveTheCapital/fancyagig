@@ -32,7 +32,7 @@ class App extends Component {
           gigs={gigs.events}
           currentGenre={currentGenre}
         />
-        <Right gigs={gigs.events} currentGig={currentGig} />
+        <Right handleGigClick={this.handleGigClick} gigs={gigs.events} currentGig={currentGig} />
       </div>
     );
   }

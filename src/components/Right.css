@@ -2,7 +2,7 @@
   display: flex;
   width: 33.33%;
   height: 80%;
-  background-color: darkkhaki;
+  background-color: #E94B3C;
   flex-direction: column;
 }
 
@@ -11,7 +11,7 @@
   flex-flow: column nowrap;
   text-align: center;
   height: 70%;
-  background-color: wheat;
+  background-color: #DBB1CD;
   justify-content: space-between;
   margin: 0 auto;
   width: 100%;
@@ -40,4 +40,11 @@
 
 #gig-link:hover {
   border: 3px solid seagreen;
+  color:rgba(46, 139, 86, 0.808);
+}
+
+.previous-gigs-list {
+  padding-left: 2em;
+  width: 90%;
+  margin: 0 auto;
 }

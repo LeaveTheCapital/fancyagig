@@ -2,14 +2,14 @@
   display: flex;
   width: 33.333%;
   height: 80%;
-  background-color: olive;
+  background-color: white;
 }
 
 .gig-square {
   display: flex;
   width: 50%;
   height: 30%;
-  background-color: darkorange;
+  background-color: #BC70A4;
   outline: 1px solid black;
   text-align: center;
   flex-flow: column nowrap;
@@ -37,10 +37,10 @@
     transform: rotate(0deg);
   }
   25% {
-    transform: rotate(10deg);
+    transform: rotate(2deg);
   }
   75% {
-    transform: rotate(-10deg);
+    transform: rotate(-2deg);
   }
    100% {
     transform: rotate(0deg);

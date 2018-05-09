@@ -70,9 +70,9 @@ class Right extends Component {
             </a>
           </div>
         )}
-        <ul>
-          {previousGigs.map((previousGig) => {
-            return <li>
+        <ul className="previous-gigs-list">
+          {previousGigs.map((previousGig, i) => {
+            return <li onClick={this.props.handleGigClick} key={i} id={previousGig.id} className="previous-gigs">
               {previousGig.name}
             </li>
           })}
