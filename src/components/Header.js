@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import "./Header.css";
+import ReactDOM from "react-dom";
 
 class Header extends Component {
-  state = {
-    currentLocation: null,
-    class: "locName"
-  };
+  state = {};
+
   shouldComponentUpdate(nextProps) {
     return nextProps.currentLocation !== this.props.currentLocation;
   }
 
   componentDidUpdate(nextProps) {
-    console.log(this.state.class)
+    const locationElement = ReactDOM.findDOMNode(this.refs.location);
+    locationElement.classList.toggle("locName");
     setTimeout(() => {
-      this.setState({ class: this.props.currentLocation || 'locName' });
+      locationElement.classList.toggle("locName");
     }, 2000);
   }
 
@@ -27,7 +27,9 @@ class Header extends Component {
           </span>
         </h1>
         {this.props.currentLocation && (
-          <h2 id="location-heading" className={this.state.class}>{this.props.currentLocation}</h2>
+          <h2 ref="location" id="location-heading">
+            {this.props.currentLocation}
+          </h2>
         )}
       </div>
     );
