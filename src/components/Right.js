@@ -12,15 +12,19 @@ class Right extends Component {
   componentWillReceiveProps(nextProps) {
     const numPrevGigs = this.state.previousGigs.length;
     const newPreviousGigs = this.state.previousGigs.slice();
-    // previousGigs.length < 3 ? 
+    // previousGigs.length < 3 ?
     if (nextProps.currentGig) {
       if (this.props.currentGig) {
         if (this.state.currentGig) {
           if (this.props.currentGig !== this.state.currentGig.id) {
             if (numPrevGigs < 3) {
-              newPreviousGigs.unshift(getGigDetails(this.props.gigs, this.props.currentGig))
+              newPreviousGigs.unshift(
+                getGigDetails(this.props.gigs, this.props.currentGig)
+              );
             } else if (numPrevGigs === 3) {
-              newPreviousGigs.unshift(getGigDetails(this.props.gigs, this.props.currentGig));
+              newPreviousGigs.unshift(
+                getGigDetails(this.props.gigs, this.props.currentGig)
+              );
               newPreviousGigs.pop();
             }
             this.setState({
@@ -65,6 +69,7 @@ class Right extends Component {
             {gig.info && <p>Please Note: {gig.info}</p>}
             {gig.time && <p>Time: {gig.time}</p>}
             <p>Genre: {gig.genre}</p>
+            {/* eslint-disable-next-line*/}
             <a href={gig.url} target="_blank" id="button-box">
               <button id="gig-link">Buy tickets please</button>
             </a>
@@ -72,9 +77,16 @@ class Right extends Component {
         )}
         <ul className="previous-gigs-list">
           {previousGigs.map((previousGig, i) => {
-            return <li onClick={this.props.handleGigClick} key={i} id={previousGig.id} className="previous-gigs">
-              {previousGig.name}
-            </li>
+            return (
+              <li
+                onClick={this.props.handleGigClick}
+                key={i}
+                id={previousGig.id}
+                className="previous-gigs"
+              >
+                {previousGig.name}
+              </li>
+            );
           })}
         </ul>
       </div>
